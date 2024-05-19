@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlightPool</title>
+    <style>
+ nav {
+  background-color: #ffffff;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+nav .logo {
+  width: auto;
+  height: auto;
+  margin-right: 10px;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+nav ul li {
+  margin-right: 100px;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  font-family:Georgia, 'Times New Roman', Times, serif ;
+  font-size: 20px
+  
+}
+
+nav ul li a {
+  color: #000000;
+  text-decoration: none;
+  padding: 25px;
+}
+
+nav ul li a:hover {
+  background-color: #ADD8E6;
+}
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 600px;
+  
+}
+
+.image-container img {
+  max-width: 100%;
+  max-height: 100%;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+.frame-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.frame {
+  border: 2px solid #ADD8E6;
+  padding: 10px;
+  flex: 1;
+}
+
+.frame-inner1 {
+  background-color: #faf395;
+  padding: 10px;
+  text-align: center;
+}
+.frame-inner2 {
+  background-color: #face95;
+  padding: 10px;
+  text-align: center;
+}
+.frame-inner3 {
+  background-color: #faf395;
+  padding: 10px;
+  text-align: center;
+}
+p {
+  margin: 0;
+  color: #000;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 2px 2px 2px rgba(255, 255, 255, 0.5);
+}
+body {
+      background-color: #ADD8E6;
+    }
+    .slider {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  position: relative;
+}
+
+.slider {
+  width: 50%;
+  height: 500px;
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.controls {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+}
+
+.controls button {
+  background-color: transparent;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.controls button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.arrow {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 24px;
+  margin-right: 5px;
+}
+.search-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  padding: 20px;
+  border: 5px solid #face95;
+  border-radius: 5px;
+  max-width: 875px;
+  background-color: #faf395 ;
+}
+
+.search-form h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.search-form label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.search-form input[type="text"],
+.search-form input[type="date"],
+.search-form select {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.search-form select {
+  appearance: menulist;
+}
+
+.search-form button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.search-form button:hover {
+  background-color: #45a049;
+}
+.promotions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 1200px;
+}
+
+.promotion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  margin: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.promotion:hover {
+  transform: translateY(-5px);
+}
+
+.promotion img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.promotion h3 {
+  margin: 0;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.promotion p {
+  margin: 0;
+  font-size: 15px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.trust-section {
+  background-color: #faf395;
+  padding: 50px 0;
+  border: 2px solid #4CAF50;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.section-subtitle {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.review-carousel {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding: 20px;
+}
+
+.review-item {
+  flex: 0 0 200px;
+  margin: 20px;
+  background-color: #face95;
+  border: 2px solid #4CAF50;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.review-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.review-text {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.review-author {
+  font-size: 14px;
+  color: #666;
+}
+
+
+.container2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.card {
+  background-image: url(media/images/aircrafts/high-angle-plane-on-blue-background_23-2148580911.avif);
+  
+  border-radius: 10px;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.4);
+  padding: 50px;
+  text-align: center;
+  max-width: 400px;
+}
+
+.Sub {
+  color: #ffda08;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+input[type="email"] {
+  width: 65%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+}
+
+.subbutton {
+  background-color: crimson;
+  color: #fff;
+  padding: 10px 10px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.4s ease;
+}
+
+button:hover {
+  background-color: #65686b;
+}
+
+.message {
+  display: none;
+  color: green;
+  margin-top: 40px;
+}
+
+footer {
+  background-color: #fff9f9;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+footer a {
+  color: #000000;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+@media (min-width: 768px) {
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+    </style>
+</head>
+<html>
+<body>    
+  <nav>
+    <div class="logo">
+      <img src="media/logo.png" alt="Company Logo" width="150">
+    </div>
+    <ul>
+      <li><a href="#promotion" class="smooth-scroll"> Акции</a></li>
+      <li><a href="#search" class="smooth-scroll">Поиск</a></li>     
+      <li><a href="Enter.html">Вход</a></li>
+      <li><a href="Lichcab.html" target="_blank">Личный кабинет</a></li>
+    </ul>
+  </nav>
+ 
+  <div class="image-container">
+    <img src="media/images/aircrafts/airbus.jpg" alt="Image Description">
+  </div>
+      
+      <div class="frame-container">
+        <div class="frame">
+          <div class="frame-inner1">
+            <h1>Принцип 1</h1>
+            <p>Корпоративные скидки могут быть получены при бронировании билетов для сотрудников компании. Эти скидки могут достигать до 50% от полной стоимости билета.</p>
+          </div>
+        </div>
+        <div class="frame">
+          <div class="frame-inner2">
+            <h1>Принцип 3</h1>
+            <p>Предоплата билетов заранее может привести к снижению их стоимости. Это связано с тем, что авиакомпании предлагают скидки за предоплату, чтобы обеспечить себе более раннюю оплату.</p>
+          </div>
+        </div>
+        <div class="frame">
+          <div class="frame-inner3">
+            <h1>Принцип 3</h1>
+            <p>Минимальный тариф может быть получен, если зарезервировать билет заранее. Это связано с тем, что авиакомпании предлагают скидки за раннюю резервацию, чтобы заполнить свои самолеты.</p>
+          </div>
+        </div>
+      </div>
+      <h1>Вот наш парк самолётов и команд экипажа:</h1>
+      <div class="slider">
+        <div class="slide">
+          <img src="media/images/aircrafts/N466SW_LAX_(30314755488).jpg" alt="Aircraft 1">
+        </div>
+        <div class="slide">
+          <img src="media/images/aircrafts/96-963589_airbus-a320-wallpaper-airbus-a320-wallpaper-hd.jpg" alt="Aircraft 2">
+        </div>
+        <div class="slide">
+          <img src="media/images/aircrafts/960.jpg" alt="Aircraft 3">
+        </div>
+        <div class="slide">
+          <img src="media/images/aircrafts/aircraft.jpg" alt="Aircraft 4">
+        </div>
+        <div class="slide">
+          <img src="media/images/2b7b7c25-38ae-45a6-bf6d-6e168424c289.jpg" alt="Flight Crew 2">
+        </div>
+        <div class="slide">
+          <img src="media/images/2c781aee-82f2-4ed6-95a3-d99cb9b56eeb.jpg" alt="Flight Crew 3">
+        </div>
+        <div class="controls">
+          <button class="prev"><span class="arrow">&#10094;</span></button>
+          <button class="next"><span class="arrow">&#10095;</span></button>
+        </div>
+      </div>
+      <div class="search-form">
+        
+        <a id="search"><h2>Найдём самые дешёвые билеты!</h2></a>
+        <form class="searchform" id= "search-form" action="/search" method="post">
+          <label for="from">Откуда:</label>
+          <input type="text" id="from" name="from" required>
+      
+          <label for="to">Куда:</label>
+          <input type="text" id="to" name="to" required>
+      
+          <label for="going">Туда:</label>
+          <input type="date" id="going" name="going" required>
+      
+          <label for="returning">Обратно:</label>
+          <input type="date" id="returning" name="returning">
+      
+          <label for="passengers">Количество пасажиров:</label>
+          <select id="passengers" name="passengers" required>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+          </select>
+      
+          <button id="searchButton">Поиск билетов</button>
+      </div>
+      <a id="promotion"> <h1 align="center">Наши Весенние акции!</h1></a>
+      <div class="promotions">
+        <div class="promotion">
+          <img src="media/images/promotions/promotion1.jpg" alt="Promotion 1">
+          <h3>Скидка на эконом-класс 15% до конца мая!</h3>
+          <p>Успейте воспользоваться уникальным предложением и забронируйте билеты на эконом класс сейчас со скидкой 15%! Это отличный шанс сэкономить на вашем следующем путешествии, не потеряв при этом ни в качестве обслуживания, ни в комфорте полета. Не упустите возможность путешествовать выгодно и комфортно – бронируйте эконом класс по специальной цене уже сегодня и до конца мая!</p>
+        </div>
+        <div class="promotion">
+          <img src="media/images/promotions/promotion2.jpg" alt="Promotion 2">
+          <h3>Граунд-Каньон</h3>
+          <p>Приглашаем вас на удивительное приключение в Граунд-Каньон! Ощутите величие природы, погрузитесь в удивительные красоты этого удивительного места. Путешествие по каньону оставит незабываемые впечатления и впечатления на всю жизнь. Присоединяйтесь к нам и откройте для себя уникальные чудеса Граунд-Каньона!</p>
+        </div>
+        <div class="promotion">
+          <img src="media/images/promotions/promotion3.jpg" alt="Promotion 3">
+          <h3>Отличный отдых с семьей в Астрахани!</h3>
+          <p>Приглашаем всю вашу семью на незабываемый пикник в живописный город Астрахань! Насладитесь вкусными шашлыками под открытым небом, окруженные красотой природы и уютом родных и близких. Дети будут рады играм на свежем воздухе, а взрослые смогут насладиться приятным времяпровождением и общением. Присоединяйтесь к нам и создайте яркие и теплые воспоминания вместе в Астрахани!</p>
+        </div>
+        <section class="trust-section">
+          <div class="container">
+            <h2 class="section-title">Мнение наших пасажиров:</h2>
+            <p class="section-subtitle">Не верьте нам на слово. Выслушайте довольных пассажиров.</p>
+            <div class="review-carousel">
+              <div class="review-item">
+                <img src="media/images/msg5008401358-478320.jpg" alt="Passenger 1">
+                <p class="review-text">"Отличный опыт полёта! Всё было на высоком уровне - от обслуживания до питания. Сотрудники очень полезны и вежливы. Рекомендую!"</p>
+                <p class="review-author">- Александр.</p>
+              </div>
+              <div class="review-item">
+                <img src="media/images/msg1482855132-478334.jpg" alt="Passenger 2">
+                <p class="review-text">"К сожалению, мой полёт был отменён, но мне быстро и эффективно предоставили альтернативный рейс. Благодарю за профессионализм!"</p>
+                <p class="review-author">- София.</p>
+              </div>
+              <div class="review-item">
+                <img src="media/images/profile.png" alt="Passenger 3">
+                <p class="review-text">"Мне очень понравилось, что самолёт был чистым и комфортным. Экипаж был очень дружелюбным и помог мне с багажом."</p>
+                <p class="review-author">- Тихон.</p>
+              </div>
+              <div class="review-item">
+                <img src="media/images/msg5643928344-478274.jpg" alt="Passenger 4">
+                <p class="review-text">"Самолеты этой авиакомпании летают так же быстро, как мой <q>Белорус</q> собирает картошку</p>
+                <p class="review-author">- Иван.</p>
+              </div>
+              <div class="review-item">
+                <img src="media/images/profile.png" alt="Passenger 5">
+                <p class="review-text">"Мне понравилось, что авиакомпания предлагает удобные опции для онлайн-регистрации и выбора места. Это упрощает процесс."</p>
+                <p class="review-author">- Анна.</p>
+              </div>
+              <div class="review-item">
+                <img src="media/images/profile.png" alt="Passenger 6">
+                <p class="review-text">"Я была впечатлена быстрым и эффективным решением проблемы со моей поездкой. Спасибо за превосходный сервис!"</p>
+                <p class="review-author">- Мария.</p>
+                
+        </section>
+          </div>
+          <div class="container2">
+          <div class="card">
+            <div class="Sub">Подпишитесь на рассылку звкрытых акций!</div> 
+            <p>Будьте осведомлены о самых горячих акциях!</p>
+            <form  id="subscribe-form" method="POST">
+              <input type="email" name="email" id="email" placeholder="Enter your email" required>
+              <button class="subbutton" type="submit">Subscribe</button>
+            </form>
+            <p class="message" id="message"></p>
+          </div>  
+          </div>
+          <footer>
+            <div class="footer-content">
+              <p>Разработчик: Кралько Владислав Витальевич.</p>
+              <p><a href="tel:+88001001010">8 (800) 100-10-10</a></p>
+            </div>
+          </footer>
+      <script>
+        const slider = document.querySelector('.slider');
+const slides = Array.from(slider.children);
+const prevButton = document.querySelector('.prev');
+const nextButton = document.querySelector('.next');
+let currentSlide = 0;
+
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+    slide.classList.remove('active');
+    if (i === index) {
+      slide.classList.add('active');
+    }
+  });
+}
+
+function nextSlide() {
+  currentSlide++;
+  if (currentSlide >= slides.length) {
+    currentSlide = 0;
+  }
+  showSlide(currentSlide);
+}
+
+function prevSlide() {
+  currentSlide--;
+  if (currentSlide < 0) {
+    currentSlide = slides.length - 1;
+  }
+  showSlide(currentSlide);
+}
+
+prevButton.addEventListener('click', prevSlide);
+nextButton.addEventListener('click', nextSlide);
+
+showSlide(currentSlide);
+
+      </script>
+      <script>
+        document.getElementById("searchButton").addEventListener("click", function(){
+        window.location.href = "Search1.html";
+      });
+      </script>
+      <script>
+const form = document.getElementById("subscribe-form");
+const email = document.getElementById("email");
+const message = document.getElementById("message");
+form.addEventListener("subscribe-button", function (e) {
+  e.preventDefault();
+  if (validateEmail(email.value)) {
+    message.textContent = "Спасибо за подписку!";
+    message.style.display = "block";
+    email.value = "";
+  } else {
+    message.textContent = "Пожалуйста, Введите правильный email-адрес!";
+    message.style.display = "block";
+  }
+});
+
+function validateEmail(email) {
+  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+}
+
+</script>
+<script>
+  const footer = document.querySelector("footer");
+
+footer.addEventListener("click", () => {
+  window.scrollTo({
+    top: footer.offsetTop,
+    behavior: "smooth"
+  });
+});
+</script>
+</body>
+</html>

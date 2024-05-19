@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход</title>
+    <style>
+         nav {
+  background-color: #ffffff;
+  padding: 1px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+nav .logo {
+  width: auto;
+  height: auto;
+  margin-right: 10px;
+}
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+nav ul li {
+  margin-right: 100px;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  font-family:Georgia, 'Times New Roman', Times, serif ;
+  font-size: 20px
+  
+}
+
+nav ul li a {
+  color: #000000;
+  text-decoration: none;
+  padding: 25px;
+}
+
+nav ul li a:hover {
+  background-color: #ADD8E6;
+}
+p {
+  margin: 0;
+  color: #000;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 2px 2px 2px rgba(255, 255, 255, 0.5);
+}
+body {
+      background-color: #ADD8E6;
+    }
+ 
+      header {
+        background-color: #f8f9fa;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+  
+      header h1 {
+        text-align: center;
+  margin-bottom: 15px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+      }
+    
+        .container {
+          max-width: 600px;
+          margin: 50px auto;
+          padding: 20px;
+          border: 5px solid #face95;
+          border-radius: 4px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          margin-top: 80px;
+          background-color: #faf395;
+        }
+    
+        label {
+          display: block;
+          margin-top: 20px;
+          font-weight: bold;
+        }
+    
+        input[type="text"],
+        input[type="password"] {
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          box-sizing: border-box;
+          margin-top: 5px;
+        }
+    
+       .ent {
+          background-color: #007bff;
+          color: #fff;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 4px;
+          cursor: pointer;
+          margin-top: 20px;
+        }
+       .reg {
+        background-color: #37bd0e;
+          color: #fff;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 4px;
+          cursor: pointer;
+          margin-top: 20px;
+       }
+        input[type="submit"]:hover {
+          background-color: #0056b3;
+        }
+    
+        .error {
+          color: red;
+          font-size: 12px;
+          margin-top: 5px;
+        }
+    
+       
+        .developer-info {
+          order: 2;
+          flex-grow: 1;
+          text-align: right;
+        }
+        footer {
+  background-color: #fff9f9;
+  color: #000000;
+  padding: 20px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  padding: 20px;
+  text-align: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+footer a {
+  color: #000000;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+@media (min-width: 768px) {
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+      </style>
+    </head>
+    <body>
+      <header>
+        <nav>
+    <div class="logo">
+      <img src="media/logo.png" alt="Company Logo" width="150">
+    </div>
+     <ul>
+      <li><a href="index.html">На главную</a></li>
+  </nav>
+      </header>
+      <div class="container">
+        <h2>Вход в личный кабинет</h2>
+        <form id="login-form">
+          <label for="phone">Телефон:</label>
+          <input type="text" id="phone" name="phone" value="89991234567" required>
+          <div class="error" id="phone-error"></div>
+    
+          <label for="password">Пароль:</label>
+          <input type="password" id="password" name="password" value="password12*" required>
+          <div class="error" id="password-error"></div>
+    
+           <button class="ent" type="button" id="my-button">Войти</button>
+           <button class="reg" type="button" id="reg">Регистрация</button>
+        </form>
+      </div>
+      <footer>
+        <div class="footer-content">
+          <p>Разработчик: Кралько Владислав Витальевич.</p>
+          <p><a href="tel:+88001001010">8 (800) 100-10-10</a></p>
+        </div>
+      </footer>
+</body>
+<script>
+  const myButton = document.getElementById('my-button');
+
+myButton.addEventListener('click', () => {
+  window.location.href = 'Lichcab.html';
+});
+const reg = document.getElementById('reg');
+
+reg.addEventListener('click', () => {
+  window.location.href = 'registr.html';
+});
+</script>
+</html>
